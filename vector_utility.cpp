@@ -1,10 +1,20 @@
 #include <cstdlib>
 #include <vector>
+#include <ostream>
 #include "vector_utility.h"
 
 template std::vector<int> operator+(const std::vector<int>&, const std::vector<int>&);
 template std::vector<double> operator+(const std::vector<double>&, const std::vector<double>&);
 template std::vector<double> teleport(const double, const int);
+template std::ostream& operator<<(std::ostream&, const std::vector<double>&);
+template std::ostream& operator<<(std::ostream&, const std::vector<int>&);
+
+template <typename T>
+std::ostream& operator<<(std::ostream& os, const std::vector<T>& vec){
+	for (const auto& val : vec)
+		os << val << "\n";
+	return os;
+}
 
 template <typename T>
 std::vector<T> operator+(const std::vector<T>& a, const std::vector<T>& b){

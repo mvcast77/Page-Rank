@@ -4,7 +4,8 @@
 #include "csr_utility.h"
 #include "vector_utility.h"
 
-int main(void){
+int main(int argc, char ** argv){
+	//if (argc < 2) std::cerr << "Expected format is ./page_rank <input file>\n";
 	CSR<int> csr;
 	csr.values.push_back(1);
 	csr.values.push_back(2);
@@ -26,12 +27,15 @@ int main(void){
 	std::vector<int> result {9,9,9};
 	std::vector<int> x {1,0,2,0};
 	result = csr * x;
-	for (const auto& val : result) std::cout << val << "\n";
+	//for (const auto& val : result) std::cout << val << "\n";
+	std::cout << result;
 	std::vector<int> adder {9,9,9};
 	result = result + adder;
-	for (const auto& val : result) std::cout << val << "\n";
+	//for (const auto& val : result) std::cout << val << "\n";
+	std::cout << result;
 
 	csr *= 2;
-	for (const auto& val : csr.values) std::cout << val << "\n";
+	//for (const auto& val : csr.values) std::cout << val << "\n";
+	std::cout << csr.values;
 	return 0;
 }
