@@ -1,2 +1,2 @@
 # Page-Rank
-C++ Implementation of Page Rank Algorithm, using CSR Matrices
+C++ Implementation of basic Page Rank Algorithm, using CSR Matrices
