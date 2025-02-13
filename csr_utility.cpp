@@ -6,9 +6,9 @@
 template struct CSR<int>;
 
 template <typename T>
-std::vector<T>& CSR<T>::vector_mult(const std::vector<T>& x, std::vector<T>& result) const{
+std::vector<T> CSR<T>::vector_mult(const std::vector<T>& x) const{
 	int spot = 0, count = 0, sum = 0;
-	result.clear();
+	std::vector<T> result;
 
 	for (int i = 0; i < ptr.size() - 1; ++i){
 		sum = count = 0;
