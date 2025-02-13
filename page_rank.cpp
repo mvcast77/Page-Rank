@@ -25,10 +25,13 @@ int main(void){
 
 	std::vector<int> result {9,9,9};
 	std::vector<int> x {1,0,2,0};
-	result = csr.vector_mult(x);
+	result = csr * x;
 	for (const auto& val : result) std::cout << val << "\n";
 	std::vector<int> adder {9,9,9};
 	result = result + adder;
 	for (const auto& val : result) std::cout << val << "\n";
+
+	csr *= 2;
+	for (const auto& val : csr.values) std::cout << val << "\n";
 	return 0;
 }

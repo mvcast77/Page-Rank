@@ -11,4 +11,10 @@ struct CSR {
 	std::vector<T> vector_mult(const std::vector<T>& x) const;
 };
 
+template <typename T>
+std::vector<T> operator*(const CSR<T>& csr, const std::vector<T>& x);
+
+template <typename T>
+CSR<T>& operator*=(CSR<T>& csr, const T coefficient);
+
 #endif
