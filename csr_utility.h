@@ -19,6 +19,12 @@ template <typename T>
 CSR<T>& operator*=(CSR<T>& csr, const T coefficient);
 
 template <typename T>
-CSR<T> transpose(CSR<T>& old);
+CSR<T>& transpose(CSR<T>& old, CSR<T>& newby);
+
+template <typename T>
+std::istream& operator>>(std::istream& file, CSR<T>& csr);
+
+template <typename T>
+std::ostream& operator<<(std::ostream& os, const CSR<T>& csr);
 
 #endif
