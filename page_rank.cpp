@@ -13,12 +13,28 @@ int main(int argc, char ** argv){
 	CSR<double> * csr_input = new CSR<double>;
 	file >> csr_input;
 	std::cout << csr_input;
+	//std::cout << "\n" << csr_input->columns << "\n";
 
 	CSR<double> * csr = new CSR<double>;
 	std::cout << transpose(csr_input, csr);
+	
+	unsigned N = csr->ptr.size() - 1;
+	double vo_start = 1 / (double) N;
 
-	//std::vector<double> result {9,9,9,9,9};
-	//std::vector<double> x {1,1,1,1,1};
+	std::vector<double> V;
+	std::vector<double> Vo;
+	for (unsigned i = 0; i < N; ++i){
+		V.push_back(0.0);
+		Vo.push_back(vo_start);
+	}
+	std::cout << Vo;
+
+	(*csr) *= 2.0;
+	std::cout << csr;
+
+	V = csr * Vo;
+	std::cout << V;
+		
 	//result = csr * x;
 	//for (const auto& val : result) std::cout << val << "\n";
 	//std::cout << result;

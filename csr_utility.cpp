@@ -18,7 +18,8 @@ template std::ostream& operator<<(std::ostream&, const CSR<double>*);
 
 template <typename T>
 std::vector<T> CSR<T>::vector_mult(const std::vector<T>& x) const{
-	int spot = 0, count = 0, sum = 0;
+	int spot = 0, count = 0;
+	T sum = 0;
 	std::vector<T> result;
 
 	for (int i = 0; i < ptr.size() - 1; ++i){
@@ -27,6 +28,7 @@ std::vector<T> CSR<T>::vector_mult(const std::vector<T>& x) const{
 			if (j == indices[spot]){
 				sum += x[j] * values[spot];
 				++spot; ++count;
+				//std::cout << sum << ", ";
 			}
 		}
 		result.push_back(sum);
