@@ -135,7 +135,7 @@ std::istream& operator>>(std::istream& file, CSR<T>* csr){
 	//adjusting ptr to contains entry numbers, as per requirement
 	for (int i = 1; i < csr->ptr.size(); ++ i) csr->ptr[i] += csr->ptr[i-1];
 
-	csr->columns = max_row_col;
+	csr->columns = max_row_col + 1;
 
 	return file;
 }
