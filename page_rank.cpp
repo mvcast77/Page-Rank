@@ -11,15 +11,15 @@ int main(int argc, char ** argv){
 	//Might want to do an error check here
 
 	CSR<double> * csr_input = new CSR<double>;
-	file >> (*csr_input);
-	std::cout << (*csr_input);
+	file >> csr_input;
+	std::cout << csr_input;
 
 	CSR<double> * csr = new CSR<double>;
-	std::cout << transpose(*csr_input, *csr);
+	std::cout << transpose(csr_input, csr);
 
 	//std::vector<double> result {9,9,9,9,9};
 	//std::vector<double> x {1,1,1,1,1};
-	//result = (*csr) * x;
+	//result = csr * x;
 	//for (const auto& val : result) std::cout << val << "\n";
 	//std::cout << result;
 	//std::vector<int> adder {9,9,9};
@@ -27,7 +27,7 @@ int main(int argc, char ** argv){
 	//for (const auto& val : result) std::cout << val << "\n";
 	//std::cout << result;
 
-	//(*csr) *= 2.0;
+	//csr *= 2.0;
 	//for (const auto& val : csr.values) std::cout << val << "\n";
 	//std::cout << csr->values;
 	delete csr;

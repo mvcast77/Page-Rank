@@ -10,21 +10,19 @@ struct CSR {
 	std::vector<int> ptr;
 	unsigned columns;
 	std::vector<T> vector_mult(const std::vector<T>& x) const;
+	void operator*=(const T coefficient);
 };
 
 template <typename T>
-std::vector<T> operator*(const CSR<T>& csr, const std::vector<T>& x);
+std::vector<T> operator*(const CSR<T>* csr, const std::vector<T>& x);
 
 template <typename T>
-CSR<T>& operator*=(CSR<T>& csr, const T coefficient);
+CSR<T>* transpose(CSR<T>* old, CSR<T>* newby);
 
 template <typename T>
-CSR<T>& transpose(CSR<T>& old, CSR<T>& newby);
+std::istream& operator>>(std::istream& file, CSR<T>* csr);
 
 template <typename T>
-std::istream& operator>>(std::istream& file, CSR<T>& csr);
-
-template <typename T>
-std::ostream& operator<<(std::ostream& os, const CSR<T>& csr);
+std::ostream& operator<<(std::ostream& os, const CSR<T>* csr);
 
 #endif
