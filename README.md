@@ -26,7 +26,7 @@ Which the user can input into that page rank program
 
 ## How Page Rank works
 
-Page Rank was developed between 1995 and 1998 by Larry Page and Sergey Brin, while conducting Research at Stanford University.
+Page Rank was developed between 1995 and 1998 by Larry Page and Sergey Brin, while conducting research at Stanford University.
 
 It would later become the initial source of Google's success.
 
