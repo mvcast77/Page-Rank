@@ -6,14 +6,18 @@
 #include "vector_utility.h"
 
 int main(int argc, char ** argv){
-	if (argc < 2) std::cerr << "Expected format is ./page_rank <input file>\n";
-	std::ifstream file {argv[1]};
+	if (argc < 3){
+		std::cerr << "Expected format is ./page_rank <d> <input file>\n";
+		return EXIT_FAILURE;
+	}
+	double d;
+	sscanf(argv[1], "%lf", &d);
+	std::ifstream file {argv[2]};
 	//Might want to do an error check here
 
 	CSR<double> * csr_input = new CSR<double>;
 	file >> csr_input;
-	std::cout << csr_input;
-	//std::cout << "\n" << csr_input->columns << "\n";
+	//std::cout << csr_input;
 
 	CSR<double> * csr = new CSR<double>;
 	std::cout << transpose(csr_input, csr);
@@ -27,25 +31,31 @@ int main(int argc, char ** argv){
 		V.push_back(0.0);
 		Vo.push_back(vo_start);
 	}
-	std::cout << Vo;
+	//std::cout << Vo;
 
-	(*csr) *= 2.0;
-	std::cout << csr;
+	(*csr) *= d;
+	//std::cout << csr;
 
-	V = csr * Vo;
-	std::cout << V;
+	//V = csr * Vo;
+	//std::cout << V;
+
+	std::vector<double> I = teleport(d, N);
+	//std::cout << I;
+
+	//V = csr * Vo + I;
+	//std::cout << "Big League now\n" << V;
 		
-	//result = csr * x;
-	//for (const auto& val : result) std::cout << val << "\n";
-	//std::cout << result;
-	//std::vector<int> adder {9,9,9};
-	//result = result + adder;
-	//for (const auto& val : result) std::cout << val << "\n";
-	//std::cout << result;
+	double epsilon = 1e-10;
+	while (magnitude( V - Vo) > epsilon){
+		Vo = V;
+		V = csr * Vo + I;
+	}
 
-	//csr *= 2.0;
-	//for (const auto& val : csr.values) std::cout << val << "\n";
-	//std::cout << csr->values;
+	std::cout << "Final result\n" << V;
+	double sum = 0.0;
+	for (const auto& val : V) sum += val;
+	std::cout << "Sum of page ranks: " << sum << "\n";
+
 	delete csr;
 	delete csr_input;
 	return 0;
