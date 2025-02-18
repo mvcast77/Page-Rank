@@ -1,6 +1,6 @@
 # Page-Rank
 
-***Project still under Construction***
+***Project still under Construction, but program runs correctly***
 
 C++ Implementation of basic Page Rank Algorithm, using CSR Matrices
 
