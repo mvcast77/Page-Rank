@@ -15,6 +15,8 @@ template double magnitude(const std::vector<double>);
 
 template <typename T>
 std::ostream& operator<<(std::ostream& os, const std::vector<T>& vec){
+	os.precision(10);
+	os << std::scientific;
 	for (const auto& val : vec)
 		os << val << "\n";
 	return os;

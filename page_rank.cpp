@@ -17,7 +17,6 @@ int main(int argc, char ** argv){
 
 	CSR<double> * csr_input = new CSR<double>;
 	file >> csr_input;
-	//std::cout << csr_input;
 
 	CSR<double> * csr = new CSR<double>;
 	std::cout << transpose(csr_input, csr);
@@ -31,25 +30,20 @@ int main(int argc, char ** argv){
 		V.push_back(0.0);
 		Vo.push_back(vo_start);
 	}
-	//std::cout << Vo;
 
 	(*csr) *= d;
-	//std::cout << csr;
-
-	//V = csr * Vo;
-	//std::cout << V;
 
 	std::vector<double> I = teleport(d, N);
-	//std::cout << I;
-
-	//V = csr * Vo + I;
-	//std::cout << "Big League now\n" << V;
 		
 	double epsilon = 1e-10;
+	unsigned iterations = 0;
 	while (magnitude( V - Vo) > epsilon){
 		Vo = V;
 		V = csr * Vo + I;
+		++iterations;
 	}
+
+	std::cout << "Number of iterations: " << iterations << "\n";
 
 	std::cout << "Final result\n" << V;
 	double sum = 0.0;
