@@ -17,6 +17,7 @@ int main(int argc, char ** argv){
 
 	CSR<double> * csr_input = new CSR<double>;
 	file >> csr_input;
+	file.close();
 
 	CSR<double> * csr = new CSR<double>;
 	std::cout << transpose(csr_input, csr);
