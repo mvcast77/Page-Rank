@@ -10,7 +10,9 @@ Compilation done with
 
 Execution run with the following command
 
-> $ ./page-rank *input_file.txt*
+> $ ./page-rank *d* *input_file.txt*
+
+such that *0 < d < 1* \(optimal value is between *.6 and .8*
 
 Input files must be of the form:
 
